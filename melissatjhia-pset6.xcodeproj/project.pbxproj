@@ -7,23 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E99A578949C05227992FD964 /* Pods_melissatjhia_pset6.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8A929BCF358F01A35C73AD /* Pods_melissatjhia_pset6.framework */; };
+		F0620C8E1DF8A4C900C3E323 /* SingleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0620C8D1DF8A4C900C3E323 /* SingleTableViewCell.swift */; };
+		F0ABF1731DF8340F008F6068 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0ABF1721DF8340F008F6068 /* GoogleService-Info.plist */; };
 		F0CFA8BF1DF6C85600488990 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CFA8BE1DF6C85600488990 /* AppDelegate.swift */; };
-		F0CFA8C11DF6C85600488990 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CFA8C01DF6C85600488990 /* FirstViewController.swift */; };
-		F0CFA8C31DF6C85600488990 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CFA8C21DF6C85600488990 /* SecondViewController.swift */; };
+		F0CFA8C11DF6C85600488990 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CFA8C01DF6C85600488990 /* FavoritesViewController.swift */; };
+		F0CFA8C31DF6C85600488990 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CFA8C21DF6C85600488990 /* SearchViewController.swift */; };
 		F0CFA8C61DF6C85600488990 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0CFA8C41DF6C85600488990 /* Main.storyboard */; };
 		F0CFA8C81DF6C85600488990 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0CFA8C71DF6C85600488990 /* Assets.xcassets */; };
 		F0CFA8CB1DF6C85600488990 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0CFA8C91DF6C85600488990 /* LaunchScreen.storyboard */; };
+		F0DD4E8A1DF82C34009766BC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DD4E891DF82C34009766BC /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18397C6E2462C75AA83D4FA7 /* Pods-melissatjhia-pset6.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-melissatjhia-pset6.release.xcconfig"; path = "Pods/Target Support Files/Pods-melissatjhia-pset6/Pods-melissatjhia-pset6.release.xcconfig"; sourceTree = "<group>"; };
+		748A04C2848AD6A2A9142BA6 /* Pods-melissatjhia-pset6.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-melissatjhia-pset6.debug.xcconfig"; path = "Pods/Target Support Files/Pods-melissatjhia-pset6/Pods-melissatjhia-pset6.debug.xcconfig"; sourceTree = "<group>"; };
+		CE8A929BCF358F01A35C73AD /* Pods_melissatjhia_pset6.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_melissatjhia_pset6.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0620C8D1DF8A4C900C3E323 /* SingleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleTableViewCell.swift; sourceTree = "<group>"; };
+		F0ABF1721DF8340F008F6068 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F0ABF1751DF83839008F6068 /* melissatjhia-pset6.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "melissatjhia-pset6.entitlements"; sourceTree = "<group>"; };
 		F0CFA8BB1DF6C85600488990 /* melissatjhia-pset6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "melissatjhia-pset6.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0CFA8BE1DF6C85600488990 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F0CFA8C01DF6C85600488990 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		F0CFA8C21DF6C85600488990 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		F0CFA8C01DF6C85600488990 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		F0CFA8C21DF6C85600488990 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		F0CFA8C51DF6C85600488990 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F0CFA8C71DF6C85600488990 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F0CFA8CA1DF6C85600488990 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F0CFA8CC1DF6C85600488990 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0DD4E891DF82C34009766BC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +42,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E99A578949C05227992FD964 /* Pods_melissatjhia_pset6.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CDC5B581D750563F65CB7B69 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				748A04C2848AD6A2A9142BA6 /* Pods-melissatjhia-pset6.debug.xcconfig */,
+				18397C6E2462C75AA83D4FA7 /* Pods-melissatjhia-pset6.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D6A33C6416A5A1A6AF553BED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE8A929BCF358F01A35C73AD /* Pods_melissatjhia_pset6.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F0CFA8B21DF6C85600488990 = {
 			isa = PBXGroup;
 			children = (
 				F0CFA8BD1DF6C85600488990 /* melissatjhia-pset6 */,
 				F0CFA8BC1DF6C85600488990 /* Products */,
+				CDC5B581D750563F65CB7B69 /* Pods */,
+				D6A33C6416A5A1A6AF553BED /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,13 +87,17 @@
 		F0CFA8BD1DF6C85600488990 /* melissatjhia-pset6 */ = {
 			isa = PBXGroup;
 			children = (
+				F0ABF1751DF83839008F6068 /* melissatjhia-pset6.entitlements */,
 				F0CFA8BE1DF6C85600488990 /* AppDelegate.swift */,
-				F0CFA8C01DF6C85600488990 /* FirstViewController.swift */,
-				F0CFA8C21DF6C85600488990 /* SecondViewController.swift */,
+				F0CFA8C01DF6C85600488990 /* FavoritesViewController.swift */,
+				F0CFA8C21DF6C85600488990 /* SearchViewController.swift */,
 				F0CFA8C41DF6C85600488990 /* Main.storyboard */,
+				F0620C8D1DF8A4C900C3E323 /* SingleTableViewCell.swift */,
+				F0DD4E891DF82C34009766BC /* LoginViewController.swift */,
 				F0CFA8C71DF6C85600488990 /* Assets.xcassets */,
 				F0CFA8C91DF6C85600488990 /* LaunchScreen.storyboard */,
 				F0CFA8CC1DF6C85600488990 /* Info.plist */,
+				F0ABF1721DF8340F008F6068 /* GoogleService-Info.plist */,
 			);
 			path = "melissatjhia-pset6";
 			sourceTree = "<group>";
@@ -74,9 +109,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F0CFA8CF1DF6C85600488990 /* Build configuration list for PBXNativeTarget "melissatjhia-pset6" */;
 			buildPhases = (
+				B9AA3E93A4BA21EF591AF6F8 /* [CP] Check Pods Manifest.lock */,
 				F0CFA8B71DF6C85600488990 /* Sources */,
 				F0CFA8B81DF6C85600488990 /* Frameworks */,
 				F0CFA8B91DF6C85600488990 /* Resources */,
+				DBEF7F61B257A8BEAEA452B5 /* [CP] Embed Pods Frameworks */,
+				941C251345C6E5FCC6E2F9BE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -101,6 +139,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = WG239Y9EWK;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -128,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0CFA8CB1DF6C85600488990 /* LaunchScreen.storyboard in Resources */,
+				F0ABF1731DF8340F008F6068 /* GoogleService-Info.plist in Resources */,
 				F0CFA8C81DF6C85600488990 /* Assets.xcassets in Resources */,
 				F0CFA8C61DF6C85600488990 /* Main.storyboard in Resources */,
 			);
@@ -135,14 +179,64 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		941C251345C6E5FCC6E2F9BE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-melissatjhia-pset6/Pods-melissatjhia-pset6-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B9AA3E93A4BA21EF591AF6F8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DBEF7F61B257A8BEAEA452B5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-melissatjhia-pset6/Pods-melissatjhia-pset6-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F0CFA8B71DF6C85600488990 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0CFA8C31DF6C85600488990 /* SecondViewController.swift in Sources */,
+				F0DD4E8A1DF82C34009766BC /* LoginViewController.swift in Sources */,
+				F0CFA8C31DF6C85600488990 /* SearchViewController.swift in Sources */,
 				F0CFA8BF1DF6C85600488990 /* AppDelegate.swift in Sources */,
-				F0CFA8C11DF6C85600488990 /* FirstViewController.swift in Sources */,
+				F0620C8E1DF8A4C900C3E323 /* SingleTableViewCell.swift in Sources */,
+				F0CFA8C11DF6C85600488990 /* FavoritesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,8 +357,10 @@
 		};
 		F0CFA8D01DF6C85600488990 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 748A04C2848AD6A2A9142BA6 /* Pods-melissatjhia-pset6.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "melissatjhia-pset6/melissatjhia-pset6.entitlements";
 				DEVELOPMENT_TEAM = WG239Y9EWK;
 				INFOPLIST_FILE = "melissatjhia-pset6/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -276,8 +372,10 @@
 		};
 		F0CFA8D11DF6C85600488990 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 18397C6E2462C75AA83D4FA7 /* Pods-melissatjhia-pset6.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "melissatjhia-pset6/melissatjhia-pset6.entitlements";
 				DEVELOPMENT_TEAM = WG239Y9EWK;
 				INFOPLIST_FILE = "melissatjhia-pset6/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -306,6 +404,7 @@
 				F0CFA8D11DF6C85600488990 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
