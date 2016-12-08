@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E99A578949C05227992FD964 /* Pods_melissatjhia_pset6.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8A929BCF358F01A35C73AD /* Pods_melissatjhia_pset6.framework */; };
+		F0346FD41DF9857600843374 /* shopItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0346FD31DF9857600843374 /* shopItem.swift */; };
+		F0346FD61DF9B4F400843374 /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0346FD51DF9B4F400843374 /* DetailedViewController.swift */; };
 		F0620C8E1DF8A4C900C3E323 /* SingleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0620C8D1DF8A4C900C3E323 /* SingleTableViewCell.swift */; };
 		F0ABF1731DF8340F008F6068 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0ABF1721DF8340F008F6068 /* GoogleService-Info.plist */; };
 		F0CFA8BF1DF6C85600488990 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CFA8BE1DF6C85600488990 /* AppDelegate.swift */; };
@@ -23,6 +25,8 @@
 		18397C6E2462C75AA83D4FA7 /* Pods-melissatjhia-pset6.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-melissatjhia-pset6.release.xcconfig"; path = "Pods/Target Support Files/Pods-melissatjhia-pset6/Pods-melissatjhia-pset6.release.xcconfig"; sourceTree = "<group>"; };
 		748A04C2848AD6A2A9142BA6 /* Pods-melissatjhia-pset6.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-melissatjhia-pset6.debug.xcconfig"; path = "Pods/Target Support Files/Pods-melissatjhia-pset6/Pods-melissatjhia-pset6.debug.xcconfig"; sourceTree = "<group>"; };
 		CE8A929BCF358F01A35C73AD /* Pods_melissatjhia_pset6.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_melissatjhia_pset6.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0346FD31DF9857600843374 /* shopItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shopItem.swift; sourceTree = "<group>"; };
+		F0346FD51DF9B4F400843374 /* DetailedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
 		F0620C8D1DF8A4C900C3E323 /* SingleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleTableViewCell.swift; sourceTree = "<group>"; };
 		F0ABF1721DF8340F008F6068 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F0ABF1751DF83839008F6068 /* melissatjhia-pset6.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "melissatjhia-pset6.entitlements"; sourceTree = "<group>"; };
@@ -91,7 +95,9 @@
 				F0CFA8BE1DF6C85600488990 /* AppDelegate.swift */,
 				F0CFA8C01DF6C85600488990 /* FavoritesViewController.swift */,
 				F0CFA8C21DF6C85600488990 /* SearchViewController.swift */,
+				F0346FD51DF9B4F400843374 /* DetailedViewController.swift */,
 				F0CFA8C41DF6C85600488990 /* Main.storyboard */,
+				F0346FD31DF9857600843374 /* shopItem.swift */,
 				F0620C8D1DF8A4C900C3E323 /* SingleTableViewCell.swift */,
 				F0DD4E891DF82C34009766BC /* LoginViewController.swift */,
 				F0CFA8C71DF6C85600488990 /* Assets.xcassets */,
@@ -232,10 +238,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0346FD61DF9B4F400843374 /* DetailedViewController.swift in Sources */,
 				F0DD4E8A1DF82C34009766BC /* LoginViewController.swift in Sources */,
 				F0CFA8C31DF6C85600488990 /* SearchViewController.swift in Sources */,
 				F0CFA8BF1DF6C85600488990 /* AppDelegate.swift in Sources */,
 				F0620C8E1DF8A4C900C3E323 /* SingleTableViewCell.swift in Sources */,
+				F0346FD41DF9857600843374 /* shopItem.swift in Sources */,
 				F0CFA8C11DF6C85600488990 /* FavoritesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
