@@ -21,7 +21,6 @@ class FavoritesViewController: UIViewController {
     }
 
     @IBAction func signOutDidTouch(_ sender: Any) {
-        print("out")
         do {
             try FIRAuth.auth()!.signOut()
             dismiss(animated: true, completion: nil)

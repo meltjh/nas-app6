@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import Firebase
 
 class DetailedViewController: UIViewController {
-    var selectedItem: shopItem?
-    
+    var selectedItem: ShopItem!
+    var user: User!
+    let usersRef = FIRDatabase.database().reference(withPath: "online")
+    let ref = FIRDatabase.database().reference(withPath: "saved-items")
+
     @IBOutlet weak var browserButton: UIButton!
     @IBOutlet weak var addFavoriteButton: UIButton!
     @IBOutlet weak var brandNameLabel: UILabel!
@@ -19,18 +23,18 @@ class DetailedViewController: UIViewController {
     @IBOutlet weak var currentPriceLabel: UILabel!
     @IBOutlet weak var productPhotoImageView1: UIImageView?
     @IBOutlet weak var productPhotoImageView2: UIImageView?
+    
     override func viewWillAppear(_ animated: Bool) {
-        
         if selectedItem != nil {
-            self.brandNameLabel.text = selectedItem!.brand
-            self.productNameLabel.text = selectedItem!.productName
-            self.originalPriceLabel.text = selectedItem!.originalPrice
+            self.brandNameLabel.text = selectedItem.brand
+            self.productNameLabel.text = selectedItem.productName
+            self.originalPriceLabel.text = selectedItem.originalPrice
             
-            if selectedItem?.originalPrice == selectedItem!.currentPrice {
+            if selectedItem?.originalPrice == selectedItem.currentPrice {
                 self.currentPriceLabel.isHidden = true
             }
             else {
-                self.currentPriceLabel.text = selectedItem!.currentPrice
+                self.currentPriceLabel.text = selectedItem.currentPrice
                 strikeThrough(label: originalPriceLabel)
             }
             
@@ -47,29 +51,42 @@ class DetailedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        FIRAuth.auth()!.addStateDidChangeListener { auth, user in
+            guard let user = user else { return }
+            self.user = User(authData: user)
+            // 1
+            let currentUserRef = self.usersRef.child(self.user.uid)
+            // 2
+            currentUserRef.setValue(self.user.email)
+            // 3
+            currentUserRef.onDisconnectRemoveValue()
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-    
+
+    @IBAction func signOutDidTouch(_ sender: Any) {
+        do {
+            try FIRAuth.auth()!.signOut()
+            dismiss(animated: true, completion: nil)
+        } catch let signOutError as NSError {
+            print ("Error signing out: \(signOutError.localizedDescription)")
+        }
+    }
+
     /// Strikes through the task string if it is checked.
     func strikeThrough(label: UILabel) {
         let attribute: NSMutableAttributedString =  NSMutableAttributedString(string: label.text!)
-            attribute.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, attribute.length))
+        attribute.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, attribute.length))
         label.attributedText = attribute
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func addButtonDidTouch(_ sender: AnyObject) {
+                                        let savedItem = SavedItem(productId: selectedItem.productId, savedByUser: self.user.email)
+                                        let savedItemRef = self.ref.child(user.uid).child(selectedItem.productId)
+                                        savedItemRef.setValue(savedItem.toAnyObject())
     }
-    */
-
 }

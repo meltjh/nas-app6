@@ -130,6 +130,9 @@
                                                 <rect key="frame" x="108" y="273" width="159.5" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="⭐️ Add to favorites ⭐️"/>
+                                                <connections>
+                                                    <action selector="addButtonDidTouch:" destination="CAJ-f8-G34" eventType="touchUpInside" id="Hf8-pv-gUe"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </view>
@@ -179,7 +182,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="vQy-vM-co0">
-                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="DhC-01-N4W"/>
+                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="DhC-01-N4W">
+                            <connections>
+                                <action selector="signOutDidTouch:" destination="CAJ-f8-G34" id="ZNK-JL-cKs"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>

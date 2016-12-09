@@ -17,7 +17,7 @@ class SingleTableViewCell: UITableViewCell {
     @IBOutlet weak var originalPriceLabel: UILabel!
 
     // Setting and accessing the celldata
-    func initializeElements(data: shopItem) {
+    func initializeElements(data: ShopItem) {
         self.brandNameLabel.text = data.brand
         self.productNameLabel.text = data.productName
         self.originalPriceLabel.text = data.originalPrice
@@ -38,7 +38,6 @@ class SingleTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

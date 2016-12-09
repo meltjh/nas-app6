@@ -12,10 +12,9 @@ import Firebase
 class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate {
     
     @IBOutlet weak var searchResultsTableView: UITableView!
-    var shopItems: [shopItem] = []
-    var selectedItem: shopItem?
-//    var selectedId: String = ""
-    
+    var shopItems: [ShopItem] = []
+    var selectedItem: ShopItem?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         searchResultsTableView.rowHeight = UITableViewAutomaticDimension
@@ -29,7 +28,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func signOutDidTouch(_ sender: Any) {
-        print("out")
         do {
             try FIRAuth.auth()!.signOut()
             dismiss(animated: true, completion: nil)
@@ -75,7 +73,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         self.shopItems = []
                         let searchResults = json["content"] as! [Dictionary<String, AnyObject>]
                         for item in searchResults {
-                            self.shopItems.append(shopItem(json: item))
+                            self.shopItems.append(ShopItem(json: item))
                         }
                         self.searchResultsTableView.reloadData()
                     }
@@ -96,7 +94,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return shopItems.count
     }
     
-    /// Fills the TableViewCell with the movie data.
+    /// Fills the TableViewCell with the product data.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.searchResultsTableView.dequeueReusableCell(withIdentifier: "cell",for: indexPath) as! SingleTableViewCell
         cell.initializeElements(data: shopItems[indexPath.row])

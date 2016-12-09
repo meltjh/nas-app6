@@ -10,9 +10,6 @@ import UIKit
 import Firebase
 
 class LoginViewController: UIViewController {
-    
-
-
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
@@ -25,8 +22,6 @@ class LoginViewController: UIViewController {
                 self.emailTextField.text = ""
                 self.passwordTextField.text = ""
 
-            } else {
-                print("Not signed in")
             }
         }
     }
@@ -43,7 +38,6 @@ class LoginViewController: UIViewController {
     func login(_ sender: AnyObject) {
         FIRAuth.auth()!.signIn(withEmail: emailTextField.text!,
                                password: passwordTextField.text!)
-        print("-------login")
     }
     
     @IBAction func registerDidTouch(_ sender: Any) {
@@ -53,11 +47,9 @@ class LoginViewController: UIViewController {
         
         let saveAction = UIAlertAction(title: "Save",
                                        style: .default) { action in
-                                        // 1
                                         let emailField = alert.textFields![0]
                                         let passwordField = alert.textFields![1]
-                                        
-                                        // 2
+
                                         FIRAuth.auth()!.createUser(withEmail: emailField.text!,
                                                                    password: passwordField.text!) { user, error in
                                                                     if error == nil {
@@ -86,18 +78,6 @@ class LoginViewController: UIViewController {
         
         present(alert, animated: true, completion: nil)
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
 
 extension LoginViewController: UITextFieldDelegate {
