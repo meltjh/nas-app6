@@ -52,14 +52,12 @@ class DetailedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Adds user to the online users.
         FIRAuth.auth()!.addStateDidChangeListener { auth, user in
             guard let user = user else { return }
             self.user = User(authData: user)
-            // 1
             let currentUserRef = self.usersRef.child(self.user.uid)
-            // 2
             currentUserRef.setValue(self.user.email)
-            // 3
             currentUserRef.onDisconnectRemoveValue()
         }
     }
@@ -68,6 +66,7 @@ class DetailedViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
+    /// Signs out the user.
     @IBAction func signOutDidTouch(_ sender: Any) {
         do {
             try FIRAuth.auth()!.signOut()
@@ -84,6 +83,7 @@ class DetailedViewController: UIViewController {
         label.attributedText = attribute
     }
     
+    /// Adds the productId to the userId branch in FireBase.
     @IBAction func addButtonDidTouch(_ sender: AnyObject) {
                                         let savedItem = SavedItem(productId: selectedItem.productId, savedByUser: self.user.email)
                                         let savedItemRef = self.ref.child(user.uid).child(selectedItem.productId)

@@ -74,6 +74,52 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F00327941DFB3ADD00E0E0CC /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				F003278E1DFB17F600E0E0CC /* SavedItem.swift */,
+				F00327921DFB2B5C00E0E0CC /* ShopItem.swift */,
+				F00327901DFB1CCB00E0E0CC /* User.swift */,
+			);
+			name = Structs;
+			sourceTree = "<group>";
+		};
+		F00327961DFB3B0700E0E0CC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F0CFA8C21DF6C85600488990 /* SearchViewController.swift */,
+				F0CFA8C01DF6C85600488990 /* FavoritesViewController.swift */,
+				F0346FD51DF9B4F400843374 /* DetailedViewController.swift */,
+				F0DD4E891DF82C34009766BC /* LoginViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F00327971DFB3B2200E0E0CC /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				F0ABF1721DF8340F008F6068 /* GoogleService-Info.plist */,
+				F0CFA8CC1DF6C85600488990 /* Info.plist */,
+			);
+			name = Info;
+			sourceTree = "<group>";
+		};
+		F00327981DFB3B3100E0E0CC /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				F0620C8D1DF8A4C900C3E323 /* SingleTableViewCell.swift */,
+			);
+			name = TableViewCells;
+			sourceTree = "<group>";
+		};
+		F00327991DFB3B6700E0E0CC /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				F0CFA8BE1DF6C85600488990 /* AppDelegate.swift */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
 		F0CFA8B21DF6C85600488990 = {
 			isa = PBXGroup;
 			children = (
@@ -96,20 +142,14 @@
 			isa = PBXGroup;
 			children = (
 				F0ABF1751DF83839008F6068 /* melissatjhia-pset6.entitlements */,
-				F0CFA8BE1DF6C85600488990 /* AppDelegate.swift */,
-				F00327921DFB2B5C00E0E0CC /* ShopItem.swift */,
-				F0CFA8C01DF6C85600488990 /* FavoritesViewController.swift */,
-				F0CFA8C21DF6C85600488990 /* SearchViewController.swift */,
-				F0346FD51DF9B4F400843374 /* DetailedViewController.swift */,
-				F00327901DFB1CCB00E0E0CC /* User.swift */,
-				F003278E1DFB17F600E0E0CC /* SavedItem.swift */,
+				F00327991DFB3B6700E0E0CC /* Other */,
+				F00327941DFB3ADD00E0E0CC /* Structs */,
+				F00327961DFB3B0700E0E0CC /* ViewControllers */,
 				F0CFA8C41DF6C85600488990 /* Main.storyboard */,
-				F0620C8D1DF8A4C900C3E323 /* SingleTableViewCell.swift */,
-				F0DD4E891DF82C34009766BC /* LoginViewController.swift */,
+				F00327981DFB3B3100E0E0CC /* TableViewCells */,
 				F0CFA8C71DF6C85600488990 /* Assets.xcassets */,
+				F00327971DFB3B2200E0E0CC /* Info */,
 				F0CFA8C91DF6C85600488990 /* LaunchScreen.storyboard */,
-				F0CFA8CC1DF6C85600488990 /* Info.plist */,
-				F0ABF1721DF8340F008F6068 /* GoogleService-Info.plist */,
 			);
 			path = "melissatjhia-pset6";
 			sourceTree = "<group>";

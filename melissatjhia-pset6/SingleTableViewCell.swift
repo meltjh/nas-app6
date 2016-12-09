@@ -22,6 +22,7 @@ class SingleTableViewCell: UITableViewCell {
         self.productNameLabel.text = data.productName
         self.originalPriceLabel.text = data.originalPrice
         
+        /// If there is a discounted price, strike through the original price. Otherwise, hide the second label.
         if data.currentPrice == data.originalPrice {
             self.currentPriceLabel.isHidden = true
         }
@@ -45,18 +46,10 @@ class SingleTableViewCell: UITableViewCell {
     }
     
     
-    /// Strikes through the task string if it is checked.
+    /// Strikes through the original price.
     func strikeThrough(label: UILabel) {
         let attribute: NSMutableAttributedString =  NSMutableAttributedString(string: label.text!)
         attribute.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, attribute.length))
         label.attributedText = attribute
     }
-    
-//    // Set the alpha value of an imageview using an smooth fading animation
-//    func updateImageVisibility(alpha: Double, duration: Double = 0.5){
-//        UIView.animate(withDuration: duration, delay: 0, options: UIViewAnimationOptions.showHideTransitionViews, animations: { () -> Void in
-//            self.productPhotoImageView.alpha = CGFloat(alpha)
-//        }, completion: { (Bool) -> Void in    }
-//        )
-//    }
 }

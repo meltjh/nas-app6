@@ -20,6 +20,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         searchResultsTableView.rowHeight = UITableViewAutomaticDimension
         searchResultsTableView.rowHeight = 140
         
+        // Default search when the view is loaded.
         getData(queryTerms: "")
     }
     
@@ -27,6 +28,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.didReceiveMemoryWarning()
     }
     
+    /// Signs out the user.
     @IBAction func signOutDidTouch(_ sender: Any) {
         do {
             try FIRAuth.auth()!.signOut()

@@ -20,6 +20,7 @@ struct SavedItem {
         self.ref = nil
     }
     
+    /// Returns the object in a Firebase accepted format.
     func toAnyObject() -> Any {
         return [
             "productId": productId,

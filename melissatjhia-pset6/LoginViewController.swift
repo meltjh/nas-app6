@@ -13,10 +13,10 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         FIRAuth.auth()?.addStateDidChangeListener() { auth, user in
+            // Go to next view when the login has succeeded.
             if user != nil {
                 self.performSegue(withIdentifier: "login", sender: nil)
                 self.emailTextField.text = ""
@@ -31,15 +31,18 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    /// Calls login function when button is pressed.
     @IBAction func loginDidTouch(_ sender: Any) {
         login(sender as AnyObject)
     }
     
+    /// Signing in.
     func login(_ sender: AnyObject) {
         FIRAuth.auth()!.signIn(withEmail: emailTextField.text!,
                                password: passwordTextField.text!)
     }
     
+    /// Alert controller is shown in which the user can register.
     @IBAction func registerDidTouch(_ sender: Any) {
         let alert = UIAlertController(title: "Register",
                                       message: "Register",
