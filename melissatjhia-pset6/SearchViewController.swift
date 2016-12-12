@@ -14,7 +14,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var searchResultsTableView: UITableView!
     var shopItems: [ShopItem] = []
     var selectedItem: ShopItem?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchResultsTableView.rowHeight = UITableViewAutomaticDimension
@@ -84,12 +84,12 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }).resume()
     }
-
-        /// Go to the view with the details of the selected product.
-        func tableView(_ didSelectRowAttableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            self.selectedItem = self.shopItems[indexPath.row]
-            self.performSegue(withIdentifier: "detailSegue", sender: self)
-        }
+    
+    /// Go to the view with the details of the selected product.
+    func tableView(_ didSelectRowAttableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedItem = self.shopItems[indexPath.row]
+        self.performSegue(withIdentifier: "detailSegue", sender: self)
+    }
     
     /// Returns the number of TableViewCells that have to be filled.
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

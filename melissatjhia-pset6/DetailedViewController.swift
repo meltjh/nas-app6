@@ -12,9 +12,9 @@ import Firebase
 class DetailedViewController: UIViewController {
     var selectedItem: ShopItem!
     var user: User!
-    let usersRef = FIRDatabase.database().reference(withPath: "online")
+    let onlineRef = FIRDatabase.database().reference(withPath: "online")
     let ref = FIRDatabase.database().reference(withPath: "saved-items")
-
+    
     @IBOutlet weak var browserButton: UIButton!
     @IBOutlet weak var addFavoriteButton: UIButton!
     @IBOutlet weak var brandNameLabel: UILabel!
@@ -51,21 +51,36 @@ class DetailedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Adds user to the online users.
         FIRAuth.auth()!.addStateDidChangeListener { auth, user in
             guard let user = user else { return }
             self.user = User(authData: user)
-            let currentUserRef = self.usersRef.child(self.user.uid)
-            currentUserRef.setValue(self.user.email)
-            currentUserRef.onDisconnectRemoveValue()
+            let currentOnlineUserRef = self.onlineRef.child(self.user.uid)
+            currentOnlineUserRef.setValue(self.user.email)
+            currentOnlineUserRef.onDisconnectRemoveValue()
+            
+//            self.ref.child(user.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+//                if snapshot.hasChild(self.selectedItem.productId) {
+//                    self.addFavoriteButton.isEnabled = false
+//                }
+//            })
+            print(self.ref.child(user.uid))
+            self.ref.child(user.uid).observe(FIRDataEventType.value, with: { (snapshot) in
+                if snapshot.hasChild(self.selectedItem.productId) {
+                    self.addFavoriteButton.setTitle("Remove from favorites 💔", for: .normal)
+                }
+                else {
+                    self.addFavoriteButton.setTitle("Add to favorites! ⭐️", for: .normal)
+                }
+
+            })
         }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     /// Signs out the user.
     @IBAction func signOutDidTouch(_ sender: Any) {
         do {
@@ -75,7 +90,7 @@ class DetailedViewController: UIViewController {
             print ("Error signing out: \(signOutError.localizedDescription)")
         }
     }
-
+    
     /// Strikes through the task string if it is checked.
     func strikeThrough(label: UILabel) {
         let attribute: NSMutableAttributedString =  NSMutableAttributedString(string: label.text!)
@@ -85,8 +100,20 @@ class DetailedViewController: UIViewController {
     
     /// Adds the productId to the userId branch in FireBase.
     @IBAction func addButtonDidTouch(_ sender: AnyObject) {
-                                        let savedItem = SavedItem(productId: selectedItem.productId, savedByUser: self.user.email)
-                                        let savedItemRef = self.ref.child(user.uid).child(selectedItem.productId)
-                                        savedItemRef.setValue(savedItem.toAnyObject())
+        let savedItemRef = self.ref.child(user.uid).child(selectedItem.productId)
+        // Put the current date (converted to double) in Firebase.
+        let date = NSDate()
+        let interval = date.timeIntervalSince1970
+        
+        self.ref.child(user.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            if snapshot.hasChild(self.selectedItem.productId) {
+                savedItemRef.removeValue()
+//                self.addFavoriteButton.setTitle("Add to favorites! ⭐️", for: .normal)
+            }
+            else {
+                savedItemRef.setValue(["Date" : interval])
+//                self.addFavoriteButton.setTitle("Remove from favorites 💔", for: .normal)
+            }
+        })
     }
 }

@@ -45,7 +45,6 @@ class SingleTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    
     /// Strikes through the original price.
     func strikeThrough(label: UILabel) {
         let attribute: NSMutableAttributedString =  NSMutableAttributedString(string: label.text!)
