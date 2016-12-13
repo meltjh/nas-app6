@@ -31,6 +31,7 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - Log in
+    
     /// Calls login function when button is pressed.
     @IBAction func loginDidTouch(_ sender: Any) {
         login(sender as AnyObject)
@@ -60,7 +61,6 @@ class LoginViewController: UIViewController {
                                         FIRAuth.auth()!.createUser(withEmail: emailField.text!,
                                                                    password: passwordField.text!) { user, error in
                                                                     if error == nil {
-                                                                        // 3
                                                                         FIRAuth.auth()!.signIn(withEmail: self.emailTextField.text!,
                                                                                                password: self.passwordTextField.text!)
                                                                     }
@@ -96,5 +96,4 @@ extension LoginViewController: UITextFieldDelegate {
         }
         return true
     }
-    
 }

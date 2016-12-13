@@ -16,13 +16,13 @@ class SingleTableViewCell: UITableViewCell {
     @IBOutlet weak var currentPriceLabel: UILabel!
     @IBOutlet weak var originalPriceLabel: UILabel!
 
-    // Setting and accessing the celldata
+    /// Setting and accessing the celldata
     func initializeElements(data: ShopItem) {
         self.brandNameLabel.text = data.brand
         self.productNameLabel.text = data.productName
         self.originalPriceLabel.text = data.originalPrice
         
-        /// If there is a discounted price, strike through the original price. Otherwise, hide the second label.
+        // If there is a discounted price, strike through the original price. Otherwise, hide the second label.
         if data.currentPrice == data.originalPrice {
             self.currentPriceLabel.isHidden = true
         }
