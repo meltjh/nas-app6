@@ -21,7 +21,6 @@ class LoginViewController: UIViewController {
                 self.performSegue(withIdentifier: "login", sender: nil)
                 self.emailTextField.text = ""
                 self.passwordTextField.text = ""
-
             }
         }
     }
@@ -30,11 +29,14 @@ class LoginViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    // MARK: - Log in
     /// Calls login function when button is pressed.
     @IBAction func loginDidTouch(_ sender: Any) {
         login(sender as AnyObject)
     }
+    
+    // TODO: Enter login + focus vanaf gebruikersnaam naar password
     
     /// Signing in.
     func login(_ sender: AnyObject) {
@@ -42,6 +44,8 @@ class LoginViewController: UIViewController {
                                password: passwordTextField.text!)
     }
     
+    // MARK: - Register
+
     /// Alert controller is shown in which the user can register.
     @IBAction func registerDidTouch(_ sender: Any) {
         let alert = UIAlertController(title: "Register",
@@ -52,7 +56,7 @@ class LoginViewController: UIViewController {
                                        style: .default) { action in
                                         let emailField = alert.textFields![0]
                                         let passwordField = alert.textFields![1]
-
+                                        
                                         FIRAuth.auth()!.createUser(withEmail: emailField.text!,
                                                                    password: passwordField.text!) { user, error in
                                                                     if error == nil {
@@ -61,30 +65,28 @@ class LoginViewController: UIViewController {
                                                                                                password: self.passwordTextField.text!)
                                                                     }
                                         }
-                                        
         }
         
         let cancelAction = UIAlertAction(title: "Cancel",
                                          style: .default)
-        
+
         alert.addTextField { textEmail in
             textEmail.placeholder = "Enter your email"
         }
-        
+
         alert.addTextField { textPassword in
             textPassword.isSecureTextEntry = true
             textPassword.placeholder = "Enter your password"
         }
-        
+
         alert.addAction(saveAction)
         alert.addAction(cancelAction)
-        
         present(alert, animated: true, completion: nil)
     }
 }
 
+// TODO: Check of deze functie nodig is.
 extension LoginViewController: UITextFieldDelegate {
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == emailTextField {
             passwordTextField.becomeFirstResponder()

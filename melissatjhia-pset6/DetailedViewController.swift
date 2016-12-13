@@ -12,7 +12,6 @@ import Firebase
 class DetailedViewController: UIViewController {
     var selectedItem: ShopItem!
     var user: User!
-    let onlineRef = FIRDatabase.database().reference(withPath: "online")
     let ref = FIRDatabase.database().reference(withPath: "saved-items")
     
     @IBOutlet weak var browserButton: UIButton!
@@ -24,12 +23,14 @@ class DetailedViewController: UIViewController {
     @IBOutlet weak var productPhotoImageView1: UIImageView?
     @IBOutlet weak var productPhotoImageView2: UIImageView?
     
+    /// Gives the attributes of the UIView the right values.
     override func viewWillAppear(_ animated: Bool) {
         if selectedItem != nil {
             self.brandNameLabel.text = selectedItem.brand
             self.productNameLabel.text = selectedItem.productName
             self.originalPriceLabel.text = selectedItem.originalPrice
             
+            // If discounted price is available, strike through the original price.
             if selectedItem?.originalPrice == selectedItem.currentPrice {
                 self.currentPriceLabel.isHidden = true
             }
@@ -42,6 +43,8 @@ class DetailedViewController: UIViewController {
             if let picture1 = NSData(contentsOf: url1!) {
                 self.productPhotoImageView1?.image = UIImage(data: picture1 as Data)
             }
+            
+            // There is not always a second product image.
             let url2 = selectedItem?.imageSmallUrl2
             if let picture2 = NSData(contentsOf: url2!) {
                 self.productPhotoImageView2?.image = UIImage(data: picture2 as Data)
@@ -51,20 +54,11 @@ class DetailedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Adds user to the online users.
         FIRAuth.auth()!.addStateDidChangeListener { auth, user in
             guard let user = user else { return }
             self.user = User(authData: user)
-            let currentOnlineUserRef = self.onlineRef.child(self.user.uid)
-            currentOnlineUserRef.setValue(self.user.email)
-            currentOnlineUserRef.onDisconnectRemoveValue()
             
-//            self.ref.child(user.uid).observeSingleEvent(of: .value, with: { (snapshot) in
-//                if snapshot.hasChild(self.selectedItem.productId) {
-//                    self.addFavoriteButton.isEnabled = false
-//                }
-//            })
-            print(self.ref.child(user.uid))
+            // Check whether the product is (not) in the favorites, change button title accordingly.
             self.ref.child(user.uid).observe(FIRDataEventType.value, with: { (snapshot) in
                 if snapshot.hasChild(self.selectedItem.productId) {
                     self.addFavoriteButton.setTitle("Remove from favorites 💔", for: .normal)
@@ -72,7 +66,6 @@ class DetailedViewController: UIViewController {
                 else {
                     self.addFavoriteButton.setTitle("Add to favorites! ⭐️", for: .normal)
                 }
-
             })
         }
     }
@@ -80,17 +73,7 @@ class DetailedViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    /// Signs out the user.
-    @IBAction func signOutDidTouch(_ sender: Any) {
-        do {
-            try FIRAuth.auth()!.signOut()
-            dismiss(animated: true, completion: nil)
-        } catch let signOutError as NSError {
-            print ("Error signing out: \(signOutError.localizedDescription)")
-        }
-    }
-    
+
     /// Strikes through the task string if it is checked.
     func strikeThrough(label: UILabel) {
         let attribute: NSMutableAttributedString =  NSMutableAttributedString(string: label.text!)
@@ -100,20 +83,32 @@ class DetailedViewController: UIViewController {
     
     /// Adds the productId to the userId branch in FireBase.
     @IBAction func addButtonDidTouch(_ sender: AnyObject) {
-        let savedItemRef = self.ref.child(user.uid).child(selectedItem.productId)
-        // Put the current date (converted to double) in Firebase.
-        let date = NSDate()
-        let interval = date.timeIntervalSince1970
+        let userRef = self.ref.child(user.uid)
         
-        self.ref.child(user.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+        // If the item is a favorite, remove it. Otherwise, add it to favorites.
+        userRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if snapshot.hasChild(self.selectedItem.productId) {
-                savedItemRef.removeValue()
-//                self.addFavoriteButton.setTitle("Add to favorites! ⭐️", for: .normal)
+                userRef.child(self.selectedItem.productId).removeValue()
             }
             else {
-                savedItemRef.setValue(["Date" : interval])
-//                self.addFavoriteButton.setTitle("Remove from favorites 💔", for: .normal)
+                // Put the current date (converted to double) in Firebase.
+                let date = NSDate()
+                let interval = date.timeIntervalSince1970
+                
+                userRef.child(self.selectedItem.productId).setValue(["ProductId": self.selectedItem.productId, "Date": interval])
             }
         })
+    }
+    
+    // MARK: - Sign out
+
+    /// Signs out the user.
+    @IBAction func signOutDidTouch(_ sender: Any) {
+        do {
+            try FIRAuth.auth()!.signOut()
+            dismiss(animated: true, completion: nil)
+        } catch let signOutError as NSError {
+            print ("Error signing out: \(signOutError.localizedDescription)")
+        }
     }
 }

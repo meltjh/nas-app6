@@ -36,7 +36,7 @@ class SingleTableViewCell: UITableViewCell {
                 self.productPhotoImageView?.image = UIImage(data: poster as Data)
         }
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
