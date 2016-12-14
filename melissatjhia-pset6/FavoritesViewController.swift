@@ -42,8 +42,8 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         self.ref.child(user.uid).queryOrdered(byChild: "Date").observe(FIRDataEventType.value, with: { (snapshot) in
             self.favoriteItems = []
             for child in snapshot.children.allObjects as! [FIRDataSnapshot] {
-                if let childDictionary = child.value as? [String: String] {
-                    self.favoriteToShopItem(productId: childDictionary["ProductId"]!)
+                if let childDictionary = child.value as? [String: AnyObject] {
+                    self.favoriteToShopItem(productId: childDictionary["ProductId"]! as! String)
                 }
             }
         })

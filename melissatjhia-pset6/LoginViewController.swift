@@ -68,9 +68,6 @@ class LoginViewController: UIViewController {
                                     }
                                     
                                 }
-                                else {
-                                    self.errorTextView.isHidden = true
-                                }
         }
         
     }
