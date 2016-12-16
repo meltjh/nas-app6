@@ -14,13 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-//    func application(application: UIApplication,
-//                     didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?)
-//        -> Bool {
-//            FIRApp.configure()
-//            return true
-//    }
-    
     // State restoration
     func application(_ application: UIApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {
         return true

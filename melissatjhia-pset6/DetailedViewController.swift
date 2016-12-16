@@ -5,13 +5,15 @@
 //  Created by Melissa Tjhia on 08-12-16.
 //  Copyright © 2016 Melissa Tjhia. All rights reserved.
 //
+//  The View shows the details of a specific product. Through this View, the
+//  product can be added to or removed from the favorites.
 
 import UIKit
 import Firebase
 
 class DetailedViewController: UIViewController {
     var selectedItem: ShopItem!
-    var user: User!
+    var uid: String!
     let ref = FIRDatabase.database().reference(withPath: "saved-items")
     
     @IBOutlet weak var browserButton: UIButton!
@@ -22,6 +24,32 @@ class DetailedViewController: UIViewController {
     @IBOutlet weak var currentPriceLabel: UILabel!
     @IBOutlet weak var productPhotoImageView1: UIImageView?
     @IBOutlet weak var productPhotoImageView2: UIImageView?
+    
+    // MARK: - Loading/appearing of the View
+
+    /// Adds an listener to check if the product is added/removed.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        FIRAuth.auth()!.addStateDidChangeListener { auth, user in
+            guard let user = user else { return }
+            self.uid = user.uid
+            
+            // Check whether the product is (not) in the favorites, change 
+            // button title accordingly.
+            self.ref.child(self.uid).observe(FIRDataEventType.value,
+                                             with: { (snapshot) in
+
+                if snapshot.hasChild(self.selectedItem.productId) {
+                    self.addFavoriteButton.setTitle("Remove from favorites 💔",
+                                                    for: .normal)
+                }
+                else {
+                    self.addFavoriteButton.setTitle("Add to favorites! ⭐️",
+                                                    for: .normal)
+                }
+            })
+        }
+    }
     
     /// Gives the attributes of the UIView the right values.
     override func viewWillAppear(_ animated: Bool) {
@@ -52,38 +80,28 @@ class DetailedViewController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        FIRAuth.auth()!.addStateDidChangeListener { auth, user in
-            guard let user = user else { return }
-            self.user = User(authData: user)
-            
-            // Check whether the product is (not) in the favorites, change button title accordingly.
-            self.ref.child(user.uid).observe(FIRDataEventType.value, with: { (snapshot) in
-                if snapshot.hasChild(self.selectedItem.productId) {
-                    self.addFavoriteButton.setTitle("Remove from favorites 💔", for: .normal)
-                }
-                else {
-                    self.addFavoriteButton.setTitle("Add to favorites! ⭐️", for: .normal)
-                }
-            })
-        }
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
+    // MARK: - Costumize label
+
     /// Strikes through the task string if it is checked.
     func strikeThrough(label: UILabel) {
-        let attribute: NSMutableAttributedString =  NSMutableAttributedString(string: label.text!)
-        attribute.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, attribute.length))
+        let attribute: NSMutableAttributedString =  NSMutableAttributedString(
+            string: label.text!)
+
+        attribute.addAttribute(NSStrikethroughStyleAttributeName, value: 2,
+                               range: NSMakeRange(0, attribute.length))
+
         label.attributedText = attribute
     }
     
+    // MARK: - Favorite change in Firebase
+
     /// Adds the productId to the userId branch in FireBase.
     @IBAction func addButtonDidTouch(_ sender: AnyObject) {
-        let userRef = self.ref.child(user.uid)
+        let userRef = self.ref.child(uid)
         
         // If the item is a favorite, remove it. Otherwise, add it to favorites.
         userRef.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -95,14 +113,15 @@ class DetailedViewController: UIViewController {
                 let date = NSDate()
                 let interval = date.timeIntervalSince1970
                 
-                userRef.child(self.selectedItem.productId).setValue(["ProductId": self.selectedItem.productId, "Date": interval])
+                userRef.child(self.selectedItem.productId).setValue(
+                    ["ProductId": self.selectedItem.productId, "Date": interval])
             }
         })
     }
     
     // MARK: - Sign out
 
-    /// Signs out the user.
+    /// Signs out the user and saves the current date as last time the app was used.
     @IBAction func signOutDidTouch(_ sender: Any) {
         do {
             try FIRAuth.auth()!.signOut()

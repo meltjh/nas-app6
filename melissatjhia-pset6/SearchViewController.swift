@@ -5,20 +5,27 @@
 //  Created by Melissa Tjhia on 06-12-16.
 //  Copyright © 2016 Melissa Tjhia. All rights reserved.
 //
+//  The user can search through the Zalando catalogus by typing terms in the
+//  search bar.
 
 import UIKit
 import Firebase
 
-class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate {
+class SearchViewController: UIViewController, UITableViewDelegate,
+UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate {
     
     @IBOutlet weak var searchResultsTableView: UITableView!
     var shopItems: [ShopItem] = []
     var selectedItem: ShopItem?
     
+    // MARK: - Loading of the View
+    
+    /// When loaded, fills the searchResultsTableView with results from the default search.
     override func viewDidLoad() {
+
         super.viewDidLoad()
         
-        // Height of a UITableViewCell
+        // Height of the UITableViewCell
         searchResultsTableView.rowHeight = UITableViewAutomaticDimension
         searchResultsTableView.rowHeight = 140
         
@@ -30,25 +37,33 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.didReceiveMemoryWarning()
     }
     
+    // MARK: Retrieving data from API
+    
     /// Collects the search results in structs that can be used for the UITableView.
     func getData(queryTerms: String) {
+
         let searchString = queryTerms.replacingOccurrences(of: " ", with: "+")
         let urlString = "https://api.zalando.com/articles/?fullText=" + searchString
         let request = URLRequest(url: URL(string: urlString)!)
-        URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
+
+        URLSession.shared.dataTask(with: request, completionHandler: { data,
+            response, error in
+            
             // Guards execute when the condition is NOT met.
             guard let data = data, error == nil else {
+                self.shopItems = []
+                print(error!)
                 return
             }
             DispatchQueue.main.async {
                 do {
                     // Convert data to json.
-                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:AnyObject]
+                    let json = try JSONSerialization.jsonObject(
+                        with: data, options: .allowFragments) as! [String:AnyObject]
                     
                     // Check if the response is true.
-                    if json["errors"] != nil {
-                    }
-                    else {
+                    if json["errors"] == nil {
+
                         // The list with results.
                         self.shopItems = []
                         let searchResults = json["content"] as! [Dictionary<String, AnyObject>]
@@ -58,6 +73,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         self.searchResultsTableView.reloadData()
                     }
                 } catch {
+                    self.shopItems = []
+                    print(error)
                 }
             }
         }).resume()
@@ -83,21 +100,29 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK: - UITableView methods
     
     /// Go to the view with the details of the selected product.
-    func tableView(_ didSelectRowAttableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ didSelectRowAttableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath) {
+
         self.selectedItem = self.shopItems[indexPath.row]
         self.performSegue(withIdentifier: "detailResultSegue", sender: self)
     }
     
     /// Returns the number of TableViewCells that have to be filled.
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return shopItems.count
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int)
+        -> Int {
+
+            return shopItems.count
     }
     
     /// Fills the TableViewCell with the product data.
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.searchResultsTableView.dequeueReusableCell(withIdentifier: "resultCell", for: indexPath) as! SingleTableViewCell
-        cell.initializeElements(data: shopItems[indexPath.row])
-        return cell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)
+        -> UITableViewCell {
+
+            let cell = self.searchResultsTableView.dequeueReusableCell(
+                withIdentifier: "resultCell", for: indexPath) as! SingleTableViewCell
+            cell.initializeElements(data: shopItems[indexPath.row])
+
+            return cell
     }
     
     // MARK: - Segue
@@ -109,7 +134,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             vc.selectedItem = self.selectedItem
         }
     }
-    
+
     // MARK: - Sign out
     
     /// Signs out the user.
