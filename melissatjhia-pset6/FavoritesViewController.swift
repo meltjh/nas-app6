@@ -46,7 +46,7 @@ UITableViewDataSource {
     
     /// Finds the values in Firebase with the ids of the favorite products of the user.
     func allFavoriteItems() {
-        self.ref.child(uid).queryOrdered(byChild: "Date").observe(
+        self.ref.child(uid).observe(
             FIRDataEventType.value, with: { (snapshot) in
                 
                 self.favoriteItems = []
