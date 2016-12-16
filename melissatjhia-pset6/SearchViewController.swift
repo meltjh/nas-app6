@@ -22,7 +22,7 @@ UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate {
     
     /// When loaded, fills the searchResultsTableView with results from the default search.
     override func viewDidLoad() {
-
+        
         super.viewDidLoad()
         
         // Height of the UITableViewCell
@@ -41,11 +41,11 @@ UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate {
     
     /// Collects the search results in structs that can be used for the UITableView.
     func getData(queryTerms: String) {
-
+        
         let searchString = queryTerms.replacingOccurrences(of: " ", with: "+")
         let urlString = "https://api.zalando.com/articles/?fullText=" + searchString
         let request = URLRequest(url: URL(string: urlString)!)
-
+        
         URLSession.shared.dataTask(with: request, completionHandler: { data,
             response, error in
             
@@ -62,7 +62,7 @@ UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate {
                     
                     // Check if the response is true.
                     if json["errors"] == nil {
-
+                        
                         // The list with results.
                         self.shopItems = []
                         let searchResults = json["content"] as! [Dictionary<String, AnyObject>]
@@ -100,7 +100,7 @@ UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate {
     /// Go to the view with the details of the selected product.
     func tableView(_ didSelectRowAttableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
-
+        
         self.selectedItem = self.shopItems[indexPath.row]
         self.performSegue(withIdentifier: "detailResultSegue", sender: self)
     }
@@ -108,18 +108,18 @@ UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate {
     /// Returns the number of TableViewCells that have to be filled.
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int)
         -> Int {
-
+            
             return shopItems.count
     }
     
     /// Fills the TableViewCell with the product data.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)
         -> UITableViewCell {
-
+            
             let cell = self.searchResultsTableView.dequeueReusableCell(
                 withIdentifier: "resultCell", for: indexPath) as! SingleTableViewCell
             cell.initializeElements(data: shopItems[indexPath.row])
-
+            
             return cell
     }
     
@@ -132,7 +132,7 @@ UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate {
             vc.selectedItem = self.selectedItem
         }
     }
-
+    
     // MARK: - Sign out
     
     /// Signs out the user.
