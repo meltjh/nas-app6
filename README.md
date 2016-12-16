@@ -9,7 +9,7 @@ UserDefaults is used to save the last time the app was used.
 This date is shown when the app has been used at least once.   
 State restoration is used to save the text that was filled in in the email address field when the application was terminated while on the log in screen.    
 
-<img src="https://github.com/meltjh/nas-app6/raw/master/doc/login.png" height="250">    
+<img src="https://github.com/meltjh/nas-app6/raw/master/doc/login2.png" height="250">    
 
 When the user has logged in, the search view appears. 
 The user can search for products in the Zalando webshop.
