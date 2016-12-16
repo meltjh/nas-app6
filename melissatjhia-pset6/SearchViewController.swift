@@ -51,7 +51,6 @@ UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate {
             
             // Guards execute when the condition is NOT met.
             guard let data = data, error == nil else {
-                self.shopItems = []
                 print(error!)
                 return
             }
@@ -73,7 +72,6 @@ UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate {
                         self.searchResultsTableView.reloadData()
                     }
                 } catch {
-                    self.shopItems = []
                     print(error)
                 }
             }

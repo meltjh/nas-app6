@@ -97,7 +97,14 @@ class DetailedViewController: UIViewController {
         label.attributedText = attribute
     }
     
-    // MARK: - Favorite change in Firebase
+    // MARK: - Button actions
+    
+    /// Links to the webpage of the product.
+    @IBAction func browserDidTouch(_ sender: Any) {
+        if let url = URL(string: selectedItem.shopUrl) {
+            UIApplication.shared.open(url, options: [:])
+        }
+    }
 
     /// Adds the productId to the userId branch in FireBase.
     @IBAction func addButtonDidTouch(_ sender: AnyObject) {

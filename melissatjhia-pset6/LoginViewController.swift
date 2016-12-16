@@ -100,6 +100,7 @@ class LoginViewController: UIViewController {
     // MARK: - Register
     
     /// Alert controller is shown in which the user can register.
+    /// Mostly from: https://www.raywenderlich.com/139322/firebase-tutorial-getting-started-2
     @IBAction func registerDidTouch(_ sender: Any) {
         let alert = UIAlertController(title: "Register",
                                       message: "Register",

@@ -124,9 +124,12 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="301.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FdT-IM-Gvg">
-                                                <rect key="frame" x="133" y="235" width="109.5" height="30"/>
+                                                <rect key="frame" x="131.5" y="235" width="110.5" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="View in browser"/>
+                                                <connections>
+                                                    <action selector="browserDidTouch:" destination="CAJ-f8-G34" eventType="touchUpInside" id="StX-lC-RXa"/>
+                                                </connections>
                                             </button>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wHo-ac-zNt">
                                                 <rect key="frame" x="42" y="24" width="290" height="194"/>
