@@ -44,6 +44,7 @@ class SingleTableViewCell: UITableViewCell {
             self.currentPriceLabel.isHidden = true
         }
         else {
+            self.currentPriceLabel.isHidden = false
             self.currentPriceLabel.text = data.currentPrice
             strikeThrough(label: self.originalPriceLabel)
         }
