@@ -5,7 +5,7 @@ The live open data API that was used is from the webshop Zalando (https://api.za
 
 On the first page, the user can log in or create an account.   
 A login or register error is shown with an alert.   
-Userdefaults is used to save the last time the app was used.   
+UserDefaults is used to save the last time the app was used.   
 This date is shown when the app has been used at least once.   
 State restoration is used to save the text that was filled in in the email address field when the application was terminated while on the log in screen.    
 
