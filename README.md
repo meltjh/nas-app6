@@ -16,7 +16,7 @@ State restoration is used to save the text that was filled in in the email addre
 <img src="https://github.com/meltjh/nas-app6/raw/master/doc/login-error.png" height="250">    
 
 When the user has logged in, the search view appears. 
-The user can search for products in the Zalando webshop, for example _shoes_.
+The user can search for products in the Zalando webshop, for example _shoes_.   
 The results are shown with an thumbnail, the brand name, the product name and the price.   
 Products that are discounted are shown with the original price striked through and the discounted price.   
 <img src="https://github.com/meltjh/nas-app6/raw/master/doc/search2.png" height="250">  
@@ -31,11 +31,9 @@ This button is then changed to "Remove from favorites!" with which the product c
 
 The Favorites button on the toolbar shows a list with the products that are favorited by the user.    
 Again, a more detailed page is shown when pressing on a product.   
-
-<img src="https://github.com/meltjh/nas-app6/raw/master/doc/favorites.png" height="250">  
-
 A product can also be deleted by swiping to the left on a product and pressing the “Delete” button.   
 
+<img src="https://github.com/meltjh/nas-app6/raw/master/doc/favorites.png" height="250">
 <img src="https://github.com/meltjh/nas-app6/raw/master/doc/delete.png" height="250">  
 
 The prices in the app are up to date with the API, because the prices are not stored in Firebase, but called through the API.
