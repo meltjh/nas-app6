@@ -120,6 +120,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         do {
             try FIRAuth.auth()!.signOut()
             dismiss(animated: true, completion: nil)
+            UserDefaults.standard.set(NSDate(), forKey: "ZalandoLastUsed")
         } catch let signOutError as NSError {
             print ("Error signing out: \(signOutError.localizedDescription)")
         }
