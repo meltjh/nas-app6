@@ -68,7 +68,6 @@ UITableViewDataSource {
             
             // Guards execute when the condition is NOT met.
             guard let data = data, error == nil else {
-                self.favoriteItems = []
                 print(error!)
                 return
             }
@@ -84,7 +83,6 @@ UITableViewDataSource {
                         self.favoritesTableView.reloadData()
                     }
                 } catch {
-                    self.favoriteItems = []
                     print(error)
                 }
             }
