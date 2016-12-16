@@ -17,7 +17,7 @@ State restoration is used to save the text that was filled in in the email addre
 
 When the user has logged in, the search view appears. 
 The user can search for products in the Zalando webshop, for example _shoes_.
-Products that are discounted are shown with the original price striked through and the discounted price.
+Products that are discounted are shown with the original price striked through and the discounted price.   
 <img src="https://github.com/meltjh/nas-app6/raw/master/doc/search.png" height="250">  
 
 When the user presses on a search result, a more detailed page is shown with two product images, the brand name, the product name and the original price (and if present, the discount price).   
