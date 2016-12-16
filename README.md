@@ -17,10 +17,11 @@ State restoration is used to save the text that was filled in in the email addre
 
 When the user has logged in, the search view appears. 
 The user can search for products in the Zalando webshop, for example _shoes_.
+The results are shown with an thumbnail, the brand name, the product name and the price.   
 Products that are discounted are shown with the original price striked through and the discounted price.   
 <img src="https://github.com/meltjh/nas-app6/raw/master/doc/search2.png" height="250">  
 
-When the user presses on a search result, a more detailed page is shown with two product images, the brand name, the product name and the original price (and if present, the discount price).   
+When the user presses on a search result, a more detailed page is shown with two bigger product images, the brand name, the product name and the original price (and if present, the discount price).   
 The button “View in browser” opens the webpage of the product, so that the user can order the product.   
 The product can be added to favorites by pressing the button “Add to favourites!”.   
 This button is then changed to "Remove from favorites!" with which the product can be removed from favorites. 
