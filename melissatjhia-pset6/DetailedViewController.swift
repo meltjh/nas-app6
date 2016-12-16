@@ -116,12 +116,8 @@ class DetailedViewController: UIViewController {
                 userRef.child(self.selectedItem.productId).removeValue()
             }
             else {
-                // Put the current date (converted to double) in Firebase.
-                let date = NSDate()
-                let interval = date.timeIntervalSince1970
-                
                 userRef.child(self.selectedItem.productId).setValue(
-                    ["ProductId": self.selectedItem.productId, "Date": interval])
+                    ["ProductId": self.selectedItem.productId])
             }
         })
     }
