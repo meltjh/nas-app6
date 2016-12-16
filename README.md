@@ -18,11 +18,9 @@ The user can search for products in the Zalando webshop.
 When the user presses on a search result, a more detailed page is shown.   
 The button “View in browser” gives the webpage of the product.   
 The product can be added to favorites by pressing the button “Add to favourites!”.   
+Via the same button, the product can be removed from favorites. 
 
-<img src="https://github.com/meltjh/nas-app6/raw/master/doc/detailed.png" height="250">  
-
-Via the same button, the product can be removed from favorites.  
-
+<img src="https://github.com/meltjh/nas-app6/raw/master/doc/detailed.png" height="250">
 <img src="https://github.com/meltjh/nas-app6/raw/master/doc/detailed2.png" height="250">  
 
 The Favorites button on the toolbar shows a list with the products that are favorited by the user.    
